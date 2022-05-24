@@ -9,14 +9,16 @@ import BrandIcon from "./brand_icon.svg";
  * You can add a new view by running "stripe apps add view" from the CLI.
  */
 const App = ({ userContext, environment }: ExtensionContextValue) => {
+  console.info(userContext);
+
   return (
     <ContextView
-      title="Hello world"
+      title="LINEメッセージ"
       brandColor="#F6F8FA" // replace this with your brand color
       brandIcon={BrandIcon} // replace this with your brand icon
       externalLink={{
         label: "View docs",
-        href: "https://stripe.com/docs/stripe-apps"
+        href: "https://stripe.com/docs/stripe-apps",
       }}
     >
       <Box css={{ height: "fill", stack: "y", distribute: "space-between" }}>
@@ -26,10 +28,10 @@ const App = ({ userContext, environment }: ExtensionContextValue) => {
             borderRadius: "medium",
             marginTop: "small",
             padding: "large",
-          }}>
-          Edit{" "}
-          <Inline css={{ fontFamily: "monospace" }}>src/views/App.tsx</Inline>{" "}
-          and save to reload this view.
+          }}
+        >
+          {userContext.id}
+          {userContext.locale}
         </Box>
 
         <Box css={{ color: "secondary" }}>
